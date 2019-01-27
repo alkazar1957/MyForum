@@ -1,6 +1,10 @@
-# Council [![Build Status](https://travis-ci.org/JeffreyWay/council.svg?branch=master)](https://travis-ci.org/JeffreyWay/council)
+# MyForum
 
 This is an open source forum that was built and maintained at Laracasts.com.
+I am using it to get back into Laravel after a two year break so, install at your own risk!
+
+It doesn't have the typeAhead search nor does it use agolia for the search.
+Instead it uses <a href="teamtnt/laravel-scout-tntsearch-driver">TNTSearch Driver for Laravel Scout</a>
 
 ## Installation
 
