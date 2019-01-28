@@ -80,7 +80,7 @@ class ProfilesController extends Controller
         // dd($request->all());
         $user->body = $request->body;
         $user->update();
-        return redirect('/profiles/'.$user->name);
+        return redirect('/profiles/'.$user->username);
     }
 
     /**
@@ -131,7 +131,7 @@ class ProfilesController extends Controller
             //      Add method for username initials image
             // $img = $user->getUsernameInitialsImage();
             $initial = new Initials;
-            $initials = $initial->generate($user->name);
+            $initials = $initial->generate($user->username);
 
             // Create a new image resource
             $img = Image::canvas(800, 600, '#6cb2eb');

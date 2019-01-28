@@ -24,7 +24,7 @@
 
                                 @if (auth()->check())
 
-                                    <li><a class="dropdown-item" href="/threads?by={{ auth()->user()->name }}">My Threads</a></li>
+                                    <li><a class="dropdown-item" href="/threads?by={{ auth()->user()->username }}">My Threads</a></li>
 
                                 @endif
 
@@ -63,7 +63,7 @@
                             <user-notifications></user-notifications>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -72,7 +72,7 @@
                                             Home
                                         </a>
                                 	<span>
-                                		<a class="dropdown-item" href="{{ route('profiles.show', \Auth::user()) }}">
+                                		<a class="dropdown-item" href="{{ route('profiles.show', \Auth::user()->username) }}">
                                             <i class="fa fa-user-circle"></i>
                                             Profile
                                         </a>

@@ -1,6 +1,6 @@
 @component('profiles.activities.activity')
 	@slot('heading')
-		{{$profileUser->name}} Subscribed to
+		{{$profileUser->username}} Subscribed to
 		@if(null !== $activity->subject)
 			<a href="{{ url($activity->subject->thread->path()) }}">{{ $activity->subject->thread->title}}</a>
 		@endif

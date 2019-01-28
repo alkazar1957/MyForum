@@ -14,8 +14,8 @@
         <div class="card-header">
             <div class="level">
 
-            <a href="{{ route('profiles.show', $thread->creator->name) }}">
-                <img src="/profiles/showAvatar/{{$thread->creator->name}}" width="30px" id="profile_picture" class="bg-info rounded-circle align-text-bottom mr-2">
+            <a href="{{ route('profiles.show', $thread->creator->username) }}">
+                <img src="/profiles/showAvatar/{{$thread->creator->username}}" width="30px" id="profile_picture" class="bg-info rounded-circle align-text-bottom mr-2">
             </a>
 
         		<h4 class="flex">
@@ -46,8 +46,8 @@
             </div>
                 <small>
                     Posted by 
-                        <a href="{{route('profiles.show', $thread->creator->name)}}">
-                            {{ $thread->creator->name }}
+                        <a href="{{route('profiles.show', $thread->creator->username)}}">
+                            {{ $thread->creator->username }}
                         </a>
                         {{ $thread->created_at->diffForHumans() }}
                         <span class="{{ $thread->locked ? 'bg-warnings fa fa-lock' : '' }}" style="color:red;">

@@ -3009,7 +3009,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['user'],
   data: function data() {
     return {
-      avatar: '/profiles/showAvatar/' + this.user.name
+      avatar: '/profiles/showAvatar/' + this.user.username
     };
   },
   computed: {
@@ -3039,7 +3039,7 @@ __webpack_require__.r(__webpack_exports__);
     persist: function persist(avatar) {
       var data = new FormData();
       data.append('avatar', avatar);
-      axios.post('/profiles/avatar/' + this.user.name, data).then(function () {
+      axios.post('/profiles/avatar/' + this.user.username, data).then(function () {
         return flash('Avatar Uploaded!');
       });
     }
@@ -3222,6 +3222,16 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       }
+    });
+    document.addEventListener("trix-initialize", function (event) {
+      var element = $("trix-editor");
+      element.on("inserted.atwho", function (event, flag, query) {
+        console.log(element[0].editor.getSelectedRange() + ' ' + element[0].innerHTML + ' ' + flag[0].textContent);
+        var range = element[0].editor.getSelectedRange();
+        element[0].editor.setSelectedRange([1, range[1]]);
+        element[0].editor.deleteInDirection("forward");
+        element[0].editor.insertHTML(flag[0].textContent);
+      });
     });
   },
   methods: {
@@ -3579,13 +3589,13 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/profiles/' + window.App.user.name + '/notifications').then(function (response) {
+    axios.get('/profiles/' + window.App.user.username + '/notifications').then(function (response) {
       return _this.notifications = response.data;
     });
   },
   methods: {
     markAsRead: function markAsRead(notification) {
-      axios.delete('/profiles/' + window.App.user.name + '/notifications/' + notification.id);
+      axios.delete('/profiles/' + window.App.user.username + '/notifications/' + notification.id);
     }
   }
 });
@@ -56937,7 +56947,7 @@ var render = function() {
         "a",
         {
           staticClass: "btn btn-xs btn-warning",
-          attrs: { href: "/profiles/" + _vm.user.name }
+          attrs: { href: "/profiles/edit" }
         },
         [_vm._v("Edit")]
       )
@@ -56952,7 +56962,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", {
       staticClass: "card card-header mt-2",
-      domProps: { textContent: _vm._s(_vm.user.name) }
+      domProps: { textContent: _vm._s(_vm.user.username) }
     }),
     _vm._v(" "),
     _c(
@@ -57363,13 +57373,13 @@ var render = function() {
                 "a",
                 {
                   staticClass: "small",
-                  attrs: { href: "/profiles/" + _vm.reply.owner.name }
+                  attrs: { href: "/profiles/" + _vm.reply.owner.username }
                 },
                 [
                   _c("img", {
                     staticClass: "bg-info rounded-circle m-auto",
                     attrs: {
-                      src: "/profiles/showAvatar/" + _vm.reply.owner.name,
+                      src: "/profiles/showAvatar/" + _vm.reply.owner.username,
                       width: "30px",
                       id: "profile_picture"
                     }
@@ -57378,7 +57388,7 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("span", {
-                    domProps: { textContent: _vm._s(_vm.reply.owner.name) }
+                    domProps: { textContent: _vm._s(_vm.reply.owner.username) }
                   })
                 ]
               )
@@ -57386,10 +57396,10 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-10 p-2 reply-body" }, [
               _c("a", {
-                attrs: { href: "/profiles/" + _vm.reply.owner.name },
-                domProps: { textContent: _vm._s(_vm.reply.owner.name) }
+                attrs: { href: "/profiles/" + _vm.reply.owner.username },
+                domProps: { textContent: _vm._s(_vm.reply.owner.username) }
               }),
-              _vm._v(" : \r\n\t        \t"),
+              _vm._v(" Said... \r\n\t        \t"),
               _c("span", { domProps: { innerHTML: _vm._s(_vm.body) } }),
               _vm._v(" "),
               _c(
@@ -57607,7 +57617,7 @@ var render = function() {
       _vm._v(" "),
       _c("trix-editor", {
         ref: "trix",
-        attrs: { input: "trix", placeholder: _vm.placeholder }
+        attrs: { id: "body", input: "trix", placeholder: _vm.placeholder }
       })
     ],
     1

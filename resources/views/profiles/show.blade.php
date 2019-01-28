@@ -8,10 +8,10 @@
 		<div class="card">
 
 			<div class="card-header">
-                <img src="/profiles/showAvatar/{{ $profileUser->name }}" width="100px" id="profile_picture" class="bg-info rounded-circle m-auto">
+                <img src="/profiles/showAvatar/{{ $profileUser->username }}" width="100px" id="profile_picture" class="bg-info rounded-circle m-auto">
                 <br>
 
-				{{ $profileUser->name }}
+				{{ $profileUser->username }}
 
 				<br>
 				<small>
@@ -63,7 +63,7 @@
 
         </div>
 
-		<div class="card card-header">Threads by {{ $profileUser->name }} </div>
+		<div class="card card-header">Threads by {{ $profileUser->username }} </div>
 		@foreach($threads as $thread)
 
 	        <div class="card">

@@ -1,6 +1,6 @@
 @component('profiles.activities.activity')
 	@slot('heading')
-		{{$profileUser->name}} Deleted a thread
+		{{$profileUser->username}} Deleted a thread
 	@endslot
 
 	@slot('body')

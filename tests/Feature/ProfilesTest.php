@@ -15,8 +15,8 @@ class ProfilesTest extends TestCase
 		// $user = create('App\User');
 		$this->signIn();
 
-		$this->get('/profiles/' . auth()->user()->name)
-			->assertSee(auth()->user()->name);
+		$this->get('/profiles/' . auth()->user()->username)
+			->assertSee(auth()->user()->username);
 	}
 	/** @test */
 		function profiles_show_all_threads_created_by_a_user ()
@@ -24,7 +24,7 @@ class ProfilesTest extends TestCase
 			$this->signIn();
 			$thread = create('App\Thread', ['user_id' => auth()->id()]);
 
-			$this->get('/profiles/' . auth()->user()->name)
+			$this->get('/profiles/' . auth()->user()->username)
 				->assertSee($thread->title);
 		}	
 }

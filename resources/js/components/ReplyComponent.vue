@@ -11,18 +11,18 @@
 
         <div v-else class="row p-0">
         	<div class="col-sm-2 m-0 p-2">
-		        <a :href="'/profiles/'+reply.owner.name"
+		        <a :href="'/profiles/'+reply.owner.username"
 		        	 class="small">
-        	<img :src="'/profiles/showAvatar/'+reply.owner.name" width="30px" id="profile_picture" class="bg-info rounded-circle m-auto">
+        	<img :src="'/profiles/showAvatar/'+reply.owner.username" width="30px" id="profile_picture" class="bg-info rounded-circle m-auto">
         	<br>
-        	<span v-text="reply.owner.name"></span>
+        	<span v-text="reply.owner.username"></span>
 		        </a>
     		</div>
 
 	    	<div class="col-sm-10 p-2 reply-body">
-		        <a :href="'/profiles/'+reply.owner.name"
-		        	v-text="reply.owner.name">
-		        </a> : 
+		        <a :href="'/profiles/'+reply.owner.username"
+		        	v-text="reply.owner.username">
+		        </a> Said... 
 	        	<span v-html="body" class=""></span>
 	        	<div>
 	                <favourite :reply="reply"></favourite>

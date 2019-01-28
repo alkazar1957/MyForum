@@ -50,7 +50,7 @@ class NotificationsTest extends TestCase
 
 		create(\Illuminate\Notifications\DatabaseNotification::class);
 		
-		$this->assertCount(1,$this->getJson("/profiles/".auth()->user()->name."/notifications/")->json());
+		$this->assertCount(1,$this->getJson("/profiles/".auth()->user()->username."/notifications/")->json());
 
 		// $this->assertCount(1, $response);
 
@@ -66,7 +66,7 @@ class NotificationsTest extends TestCase
 
 		$notificationId = auth()->user()->unreadNotifications->first()->id;
 		
-		$this->delete("/profiles/".auth()->user()->name."/notifications/{$notificationId}");
+		$this->delete("/profiles/".auth()->user()->username."/notifications/{$notificationId}");
 
 		$this->assertCount(0, auth()->user()->fresh()->unreadNotifications);
 		

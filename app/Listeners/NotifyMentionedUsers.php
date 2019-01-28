@@ -32,7 +32,7 @@ class NotifyMentionedUsers
        // preg_match_all('/ \@([^\s\.]+)/i', $event->reply->body, $matches);
        // $mentionedUser = $event->reply->mentionedUsers();
 // dd($event->reply->mentionedUsers());
-       $users = User::whereIn('name', $event->reply->mentionedUsers())
+       $users = User::whereIn('username', $event->reply->mentionedUsers())
             ->get()
             ->each(function ($user) use ($event) {
                 $user->notify(new YouWereMentioned($event->reply));

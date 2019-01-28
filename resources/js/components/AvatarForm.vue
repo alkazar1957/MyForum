@@ -1,14 +1,14 @@
 <template>
 	<div class="">
         <div class="align-self-end mr-2 pull-right">
-            <a :href="'/profiles/'+user.name" class="btn btn-xs btn-warning">Edit</a>
+            <a :href="'/profiles/edit'" class="btn btn-xs btn-warning">Edit</a>
         </div>
 
         <div class="">
     	    <img :src="avatar" id="profile_picture" class="rounded-circle w-25">
 	    </div>
 
-        <div v-text="user.name" class="card card-header mt-2"></div>
+        <div v-text="user.username" class="card card-header mt-2"></div>
 
         <div v-text="'Username: ' + user.username" class="card card-header mt-2">UserName: </div>
 
@@ -26,7 +26,7 @@
 
 		data() {
 			return {
-				avatar: '/profiles/showAvatar/'+this.user.name
+				avatar: '/profiles/showAvatar/'+this.user.username
 			}
 		},
 
@@ -54,7 +54,7 @@
 			persist(avatar) {
 				let data = new FormData();
 				data.append('avatar', avatar);
-				axios.post('/profiles/avatar/'+this.user.name, data)
+				axios.post('/profiles/avatar/'+this.user.username, data)
 					.then(() => flash('Avatar Uploaded!'));
 			}
 		}

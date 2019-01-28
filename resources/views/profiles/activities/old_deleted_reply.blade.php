@@ -1,6 +1,6 @@
 @component('profiles.activities.activity')
 	@slot('heading')
-		{{$profileUser->name}} Deleted a reply
+		{{$profileUser->username}} Deleted a reply
 	@endslot
 
 	@slot('body')

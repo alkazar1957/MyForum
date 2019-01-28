@@ -17,7 +17,7 @@
 
 			<div class="card-body">
 
-				<form action="{{route('profiles.update', ['user' => $user->name])}}" method="post" accept-charset="utf-8">
+				<form action="{{route('profiles.update', ['user' => $user->username])}}" method="post" accept-charset="utf-8">
 					@csrf
 					@method('PATCH')
 					<textarea id="body" name="body" class="form-control">{{$user->body}}</textarea>

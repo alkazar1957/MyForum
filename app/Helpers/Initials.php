@@ -9,13 +9,13 @@ class Initials
      * @param string $name
      * @return string
      */
-    public function generate(string $name) : string
+    public function generate(string $username) : string
     {
-        $words = explode(' ', $name);
+        $words = explode(' ', $username);
         if (count($words) >= 2) {
             return strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
         }
-        return $this->makeInitialsFromSingleWord($name);
+        return $this->makeInitialsFromSingleWord($username);
     }
 
     /**
@@ -24,12 +24,12 @@ class Initials
      * @param string $name
      * @return string
      */
-    protected function makeInitialsFromSingleWord(string $name) : string
+    protected function makeInitialsFromSingleWord(string $username) : string
     {
-        preg_match_all('#([A-Z]+)#', $name, $capitals);
+        preg_match_all('#([A-Z]+)#', $username, $capitals);
         if (count($capitals[1]) >= 2) {
             return substr(implode('', $capitals[1]), 0, 2);
         }
-        return strtoupper(substr($name, 0, 2));
+        return strtoupper(substr($username, 0, 2));
     }
 }

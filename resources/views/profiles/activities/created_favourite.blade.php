@@ -1,6 +1,6 @@
 @component('profiles.activities.activity')
 	@slot('heading')
-		{{$profileUser->name}} favourited a reply to
+		{{$profileUser->username}} favourited a reply to
 		@if(null !== $activity->subject)
 			<a href="{{ url($activity->subject->favourited->path()) }}">{{ $activity->subject->favourited->thread->title}}</a>
 		@endif

@@ -41,11 +41,11 @@
     <div class="card-header">
         <div class="level">
             <span class="flex">
-                <a href="{{ route('profiles.show', $thread->creator->name) }}">
-                <img src="/profiles/showAvatar/{{$thread->creator->name}}" width="50px" id="profile_picture" class="bg-info rounded-circle m-auto align-text-bottom">
+                <a href="{{ route('profiles.show', $thread->creator->username) }}">
+                <img src="/profiles/showAvatar/{{$thread->creator->username}}" width="50px" id="profile_picture" class="bg-info rounded-circle m-auto align-text-bottom">
                 <!-- <br> -->
 
-                    {{ $thread->creator->name }}
+                    {{ $thread->creator->username }}
                 </a>
                 Posted ... <span v-text="form.title"></span>
             </span>

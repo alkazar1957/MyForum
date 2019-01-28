@@ -1,10 +1,13 @@
 <?php
 Route::get('/pretend', function (){
 
-	if (null !== request()->query('user')) {
-		$user = \App\User::where('name', request()->query('user'))->first();
+	$find = request()->query('user');
+
+	if (null !== $find) {
+		$user = \App\User::where('username', $find)->first();
 	} else {
-		$user = \App\User::first();
+		abort(403);
+		// $user = \App\User::findOrFail($find);
 	}
 
 	Auth::login($user);

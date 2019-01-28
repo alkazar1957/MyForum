@@ -1,6 +1,6 @@
 @component('profiles.activities.activity')
 	@slot('heading')
-		{{$profileUser->name}} Created a thread
+		{{$profileUser->username}} Created a thread
 	@endslot
 
 	@slot('body')

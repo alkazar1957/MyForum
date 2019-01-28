@@ -47,6 +47,16 @@
  					}
  				}
  			});
+		document.addEventListener("trix-initialize", function(event) {
+		    var element = $("trix-editor");
+		    element.on("inserted.atwho", function(event, flag, query) {
+		    	console.log(element[0].editor.getSelectedRange() + ' ' + element[0].innerHTML + ' ' + flag[0].textContent);
+		    	let range = element[0].editor.getSelectedRange();
+		    	element[0].editor.setSelectedRange([1, range[1]]);
+				element[0].editor.deleteInDirection("forward");
+		        element[0].editor.insertHTML(flag[0].textContent);
+		    });
+		});
  		},
 		methods: {
 			addReply() {
