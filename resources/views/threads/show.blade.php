@@ -11,7 +11,7 @@
 <thread-view :thread="{{ $thread }}" inline-template>
 <div class="container-fluid" v-cloak>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
 
             @include('threads.partials._question')
 
@@ -22,7 +22,7 @@
         </div>
 
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 <div class="card-header">
                   This thread was Publshed {{ $thread->created_at->diffForHumans() }} by 

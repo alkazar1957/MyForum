@@ -26,5 +26,6 @@ class ProfilesTest extends TestCase
 
 			$this->get('/profiles/' . auth()->user()->username)
 				->assertSee($thread->title);
-		}	
+		}
+
 }

@@ -9,19 +9,19 @@
         </div>
 
         <div class="col-md-3">
-            <div class="card">
+<!--             <div class="card">
                 <div class="card-header">
                     Search 
                 </div>
                 <div class="card-body form-group">
                     <form action="/threads/search" method="get" accept-charset="utf-8">
                         @csrf
-                        <input class="form-control" type="text" name="q" placeholder="Search for Something..">
+                        <input class="form-control input-search" type="text" name="q" placeholder="Search for Something..">
                         <button type="Submit" class="btn btn-xs btn-primary pull-right mt-2">Search</button>
                     </form>
                 </div>
             </div>
-            @if(count($trending))
+ -->            @if(count($trending))
                 <div class="card">
                     <div class="card-header">
                         Trending Threads

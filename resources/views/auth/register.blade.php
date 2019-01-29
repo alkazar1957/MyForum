@@ -26,12 +26,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-3 col-form-label text-md-right">
+                            <label for="username" class="col-md-3 col-form-label text-md-right">
                                 {{ __('UserName') }}
                             </label>
 
                             <div class="col-md-7">
-                                <input id="name" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="name" value="{{ old('username') }}" required autofocus placeholder="Spaces will be removed. e.g. My Name => MyName">
+                                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="Spaces will be removed. e.g. My Name => MyName">
 
                                 @if ($errors->has('username'))
                                     <span class="invalid-feedback" role="alert">

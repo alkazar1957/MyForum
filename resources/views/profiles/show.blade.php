@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row">
-	<div class="col-sm-8">
+	<div class="col-md-9">
 
 		<div class="card">
 
@@ -37,7 +37,7 @@
 
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
 
         <div class="card">
 
@@ -72,7 +72,7 @@
 	            	<div class="level">
 	            	<span class="flex">
 	            		Title: 
-	            		<a href="{{ route('threads.show', ['channel' => $thread->channel, 'thread' => $thread->id]) }}">
+	            		<a href="{{ route('threads.show', ['channel' => $thread->channel, 'thread' => $thread->slug]) }}">
 	            			{{ $thread->title }}
 	            		</a>
 	            	</span>
@@ -84,7 +84,7 @@
 
 	            <div class="card card-body">
 
-	            		{{ $thread->body }}
+	            		{!! $thread->body !!}
 	            			
 	            </div>
 

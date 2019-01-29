@@ -14,7 +14,6 @@ Route::get('/pretend', function (){
 	return redirect('/threads');
 });
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,11 +23,11 @@ Route::get('/', function () {
 // });
 Auth::routes(['verify' => true]);
 
-// Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'verified'])->group(function(){
 	Route::get('/home', 'HomeController@index')->name('home');
 
-	Route::get 		('/threads', 					'ThreadsController@index'	)->name('threads')->middleware('verified');
-	Route::POST 	('/threads', 					'ThreadsController@store'	)->name('threads.store')->middleware('verified');
+	Route::get 		('/threads', 					'ThreadsController@index'	)->name('threads');
+	Route::POST 	('/threads', 					'ThreadsController@store'	)->name('threads.store');
 	Route::get 		('/threads/create', 			'ThreadsController@create'	)->name('threads.create');
 	Route::get 		('/threads/search', 			'SearchController@index' 	)->name('threads.search');
 	Route::get 		('/threads/{channel}', 			'ThreadsController@index'	)->name('threads.index');
@@ -41,7 +40,7 @@ Auth::routes(['verify' => true]);
 
 	Route::get 		('/threads/{channel}/{thread}/replies', 'RepliesController@index'	)->name('replies.index');
 	Route::POST 	('/threads/{channel}/{thread}/replies',	'RepliesController@store'	)->name('replies.store');
-	Route::POST 	('/threads/{channel}/{thread}/subscriptions',	'SubscriptionsController@store'	)->name('subscriptions.store')->middleware('auth');
+	Route::POST 	('/threads/{channel}/{thread}/subscriptions',	'SubscriptionsController@store'	)->name('subscriptions.store');
 	Route::DELETE 	('/threads/{channel}/{thread}/subscriptions',	'SubscriptionsController@destroy'	)->name('subscriptions.destroy')->middleware('auth');
 
 	Route::PATCH 	('/replies/{reply}', 					'RepliesController@update'	)->name('replies.update');
@@ -61,7 +60,7 @@ Auth::routes(['verify' => true]);
 	Route::DELETE	('/profiles/{user}/notifications/{notificationId}', 	'UserNotificationsController@destroy')->name('notifications.destroy'); 
 	Route::get 		('/profiles/{user}/notifications',		 				'UserNotificationsController@index')->name('notifications.index'); 
 
-// });
+});
 
 	Route::get('/api/users', 'Api\UsersController@index');
 	Route::POST('/api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth');
